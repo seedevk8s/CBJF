@@ -1,23 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120">
   <defs>
     <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#ffa07a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6347;stop-opacity:1" />
     </linearGradient>
   </defs>
   <rect width="200" height="120" fill="url(#grad3)"/>
 
-  <!-- Book icon -->
-  <g transform="translate(87, 35)">
-    <rect x="3" y="0" width="20" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
-    <line x1="13" y1="0" x2="13" y2="25" stroke="#667eea" stroke-width="1.5"/>
-    <line x1="6" y1="8" x2="10" y2="8" stroke="#667eea" stroke-width="1"/>
-    <line x1="16" y1="8" x2="20" y2="8" stroke="#667eea" stroke-width="1"/>
-    <line x1="6" y1="13" x2="10" y2="13" stroke="#667eea" stroke-width="1"/>
-    <line x1="16" y1="13" x2="20" y2="13" stroke="#667eea" stroke-width="1"/>
-    <line x1="6" y1="18" x2="10" y2="18" stroke="#667eea" stroke-width="1"/>
-    <line x1="16" y1="18" x2="20" y2="18" stroke="#667eea" stroke-width="1"/>
+  <!-- Dog icon -->
+  <g transform="translate(80, 30)">
+    <!-- Dog head -->
+    <ellipse cx="20" cy="23" rx="15" ry="18" fill="#ffffff" opacity="0.95"/>
+    <!-- Left ear -->
+    <ellipse cx="10" cy="15" rx="6" ry="13" fill="#ffffff" opacity="0.9" transform="rotate(-20 10 15)"/>
+    <!-- Right ear -->
+    <ellipse cx="30" cy="15" rx="6" ry="13" fill="#ffffff" opacity="0.9" transform="rotate(20 30 15)"/>
+    <!-- Eyes -->
+    <circle cx="15" cy="20" r="2" fill="#333333"/>
+    <circle cx="25" cy="20" r="2" fill="#333333"/>
+    <!-- Nose -->
+    <ellipse cx="20" cy="26" rx="3" ry="2.5" fill="#333333"/>
+    <!-- Mouth -->
+    <path d="M 20 26 Q 17 29 15 28" stroke="#333333" stroke-width="1" fill="none"/>
+    <path d="M 20 26 Q 23 29 25 28" stroke="#333333" stroke-width="1" fill="none"/>
+    <!-- Tongue -->
+    <ellipse cx="20" cy="31" rx="2" ry="3" fill="#ff69b4" opacity="0.8"/>
   </g>
 
-  <text x="50%" y="78%" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="600">강의</text>
+  <text x="50%" y="85%" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="600">강아지 상품</text>
 </svg>
