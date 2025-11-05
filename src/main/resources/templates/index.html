@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header :: header}"></head>
+<body>
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="hero-title">IT 취업, 6개월이면 충분합니다!</h1>
+        <p class="hero-subtitle">Cloud Based Java Fullstack 과정으로 실전 개발 능력을 키우세요</p>
+        <a th:href="@{/courses}" class="btn btn-light btn-lg btn-custom">
+            <i class="bi bi-rocket-takeoff"></i> 강의 둘러보기
+        </a>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <!-- Features -->
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="stats-card mb-3">
+                <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                <div class="stats-number">1,200+</div>
+                <p>수강생</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stats-card mb-3">
+                <i class="bi bi-book-fill" style="font-size: 3rem;"></i>
+                <div class="stats-number">50+</div>
+                <p>강의</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stats-card mb-3">
+                <i class="bi bi-trophy-fill" style="font-size: 3rem;"></i>
+                <div class="stats-number">85%</div>
+                <p>취업률</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Courses -->
+    <section class="mb-5">
+        <h2 class="section-title">
+            <i class="bi bi-fire"></i> 인기 강의
+        </h2>
+        <div class="row">
+            <div class="col-md-4 course-card" th:each="course : ${popularCourses}">
+                <div class="card shadow-sm">
+                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/400x200?text=Course'}"
+                         class="card-img-top" th:alt="${course.title}">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2" th:text="${course.category?.name}">카테고리</span>
+                        <h5 class="card-title" th:text="${course.title}">강의 제목</h5>
+                        <p class="card-text text-muted" th:text="${#strings.abbreviate(course.description, 80)}">
+                            강의 설명
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <span th:text="${#numbers.formatDecimal(course.rating, 1, 1)}">4.5</span>
+                            </span>
+                            <span class="text-muted">
+                                <i class="bi bi-people"></i>
+                                <span th:text="${course.enrollmentCount}">100</span>명
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="course-price" th:text="${#numbers.formatInteger(course.price, 0, 'COMMA')} + '원'">
+                                100,000원
+                            </span>
+                            <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-outline-primary btn-sm">
+                                자세히 보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Courses -->
+    <section class="mb-5">
+        <h2 class="section-title">
+            <i class="bi bi-clock-history"></i> 최신 강의
+        </h2>
+        <div class="row">
+            <div class="col-md-4 course-card" th:each="course : ${latestCourses}">
+                <div class="card shadow-sm">
+                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/400x200?text=Course'}"
+                         class="card-img-top" th:alt="${course.title}">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">NEW</span>
+                        <span class="badge bg-primary mb-2 ms-1" th:text="${course.category?.name}">카테고리</span>
+                        <h5 class="card-title" th:text="${course.title}">강의 제목</h5>
+                        <p class="card-text text-muted" th:text="${#strings.abbreviate(course.description, 80)}">
+                            강의 설명
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="course-price" th:text="${#numbers.formatInteger(course.price, 0, 'COMMA')} + '원'">
+                                100,000원
+                            </span>
+                            <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-outline-primary btn-sm">
+                                자세히 보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices -->
+    <section th:if="${!notices.isEmpty()}" class="mb-5">
+        <h2 class="section-title">
+            <i class="bi bi-megaphone"></i> 공지사항
+        </h2>
+        <div class="card">
+            <div class="list-group list-group-flush">
+                <a th:each="notice : ${notices}"
+                   th:href="@{/community/{id}(id=${notice.id})}"
+                   class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">
+                            <span class="badge bg-danger me-2">공지</span>
+                            <span th:text="${notice.title}">공지사항 제목</span>
+                        </h6>
+                        <small th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}">2025-01-01</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-light p-5 rounded">
+        <h3 class="mb-3">지금 바로 시작하세요!</h3>
+        <p class="text-muted mb-4">
+            6개월 과정을 수료하고 나면 이런 플랫폼을 직접 만들 수 있습니다.<br>
+            Spring Boot, JPA, Thymeleaf, Bootstrap을 활용한 실전 프로젝트!
+        </p>
+        <a th:href="@{/courses}" class="btn btn-primary btn-lg btn-custom me-2">
+            <i class="bi bi-book"></i> 강의 보기
+        </a>
+        <a th:href="@{/community}" class="btn btn-outline-primary btn-lg btn-custom">
+            <i class="bi bi-people"></i> 커뮤니티 참여
+        </a>
+    </section>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>

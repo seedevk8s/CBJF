@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header :: header}"></head>
+<body>
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<div class="container my-5">
+    <h1 class="mb-4">
+        <i class="bi bi-people"></i> 커뮤니티
+    </h1>
+
+    <!-- Search and Categories -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form th:action="@{/community}" method="get" class="d-flex">
+                <input type="text" name="keyword" class="form-control me-2"
+                       placeholder="게시글 검색..." th:value="${keyword}">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i> 검색
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="mb-4">
+        <a th:href="@{/community}" class="category-badge bg-secondary text-white">
+            전체
+        </a>
+        <a th:each="cat : ${categories}"
+           th:href="@{/community(category=${cat})}"
+           th:classappend="${selectedCategory != null && selectedCategory == cat} ? 'bg-primary text-white' : 'bg-light text-dark'"
+           class="category-badge"
+           th:text="${cat.name()}">
+            카테고리
+        </a>
+    </div>
+
+    <!-- Post List -->
+    <div class="card">
+        <div class="list-group list-group-flush">
+            <div th:each="post : ${postPage.content}" class="post-item">
+                <a th:href="@{/community/{id}(id=${post.id})}" class="post-title d-block mb-1"
+                   th:text="${post.title}">
+                    게시글 제목
+                </a>
+                <div class="post-meta">
+                    <span class="badge bg-secondary me-2" th:text="${post.category.name()}">카테고리</span>
+                    <i class="bi bi-person"></i>
+                    <span th:text="${post.author.name}">작성자</span>
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-eye"></i>
+                    <span th:text="${post.viewCount}">0</span>
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-chat"></i>
+                    <span th:text="${post.comments.size()}">0</span>
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-hand-thumbs-up"></i>
+                    <span th:text="${post.likeCount}">0</span>
+                    <span class="mx-2">|</span>
+                    <span th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2025-01-01 12:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div th:if="${postPage.content.isEmpty()}" class="empty-state">
+        <i class="bi bi-inbox"></i>
+        <h4>게시글이 없습니다</h4>
+        <p>첫 게시글을 작성해보세요!</p>
+    </div>
+
+    <!-- Pagination -->
+    <nav th:if="${postPage.totalPages > 1}" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${postPage.first} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/community(page=${postPage.number - 1}, category=${selectedCategory}, keyword=${keyword})}">
+                    이전
+                </a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, postPage.totalPages - 1)}"
+                th:classappend="${i == postPage.number} ? 'active'">
+                <a class="page-link"
+                   th:href="@{/community(page=${i}, category=${selectedCategory}, keyword=${keyword})}"
+                   th:text="${i + 1}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${postPage.last} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/community(page=${postPage.number + 1}, category=${selectedCategory}, keyword=${keyword})}">
+                    다음
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header :: header}"></head>
+<body>
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<div class="container my-5">
+    <div class="row">
+        <!-- Course Image -->
+        <div class="col-md-8">
+            <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/800x400?text=Course'}"
+                 class="img-fluid rounded shadow-sm mb-4" th:alt="${course.title}">
+
+            <!-- Course Info -->
+            <h1 class="mb-3" th:text="${course.title}">강의 제목</h1>
+
+            <div class="mb-3">
+                <span class="badge bg-primary me-2" th:text="${course.category?.name}">카테고리</span>
+                <span class="badge bg-info me-2" th:if="${course.level}" th:text="${course.level}">난이도</span>
+                <span class="course-rating me-3">
+                    <i class="bi bi-star-fill"></i>
+                    <span th:text="${#numbers.formatDecimal(course.rating, 1, 1)}">4.5</span>
+                </span>
+                <span class="text-muted">
+                    <i class="bi bi-people"></i>
+                    <span th:text="${course.enrollmentCount}">100</span>명 수강 중
+                </span>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-info-circle"></i> 강의 소개
+                    </h5>
+                    <p class="card-text" th:text="${course.description}">강의 설명</p>
+                </div>
+            </div>
+
+            <!-- Instructor Info -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-person"></i> 강사 정보
+                    </h5>
+                    <p class="mb-0">
+                        <strong th:text="${course.instructor?.name}">강사명</strong><br>
+                        <small class="text-muted" th:text="${course.instructor?.email}">이메일</small>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-chat-left-quote"></i> 수강 후기
+                    </h5>
+                    <div th:if="${course.reviews.isEmpty()}" class="text-muted">
+                        아직 작성된 후기가 없습니다.
+                    </div>
+                    <div th:each="review : ${course.reviews}" class="mb-3 border-bottom pb-3">
+                        <div class="d-flex justify-content-between">
+                            <strong th:text="${review.user.name}">사용자명</strong>
+                            <span class="course-rating">
+                                <i class="bi bi-star-fill" th:each="i : ${#numbers.sequence(1, review.rating)}"></i>
+                            </span>
+                        </div>
+                        <p class="mb-1" th:text="${review.content}">후기 내용</p>
+                        <small class="text-muted" th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}">
+                            2025-01-01
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4">
+            <div class="card shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h3 class="course-price mb-3" th:text="${#numbers.formatInteger(course.price, 0, 'COMMA')} + '원'">
+                        100,000원
+                    </h3>
+
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2" th:if="${course.duration}">
+                            <i class="bi bi-clock text-primary"></i>
+                            수강 기간: <strong th:text="${course.duration}">6개월</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-people text-primary"></i>
+                            수강생: <strong th:text="${course.enrollmentCount}">100</strong>명
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-star text-primary"></i>
+                            평점: <strong th:text="${#numbers.formatDecimal(course.rating, 1, 1)}">4.5</strong>
+                        </li>
+                    </ul>
+
+                    <form th:action="@{/cart/add/{id}(id=${course.id})}" method="post">
+                        <button type="submit" class="btn btn-primary w-100 mb-2">
+                            <i class="bi bi-cart-plus"></i> 장바구니 담기
+                        </button>
+                    </form>
+
+                    <a th:href="@{/courses}" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-arrow-left"></i> 목록으로
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>

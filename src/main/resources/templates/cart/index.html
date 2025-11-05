@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header :: header}"></head>
+<body>
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<div class="container my-5">
+    <h1 class="mb-4">
+        <i class="bi bi-cart3"></i> 장바구니
+    </h1>
+
+    <div th:if="${cart.items.isEmpty()}" class="empty-state">
+        <i class="bi bi-cart-x"></i>
+        <h4>장바구니가 비어있습니다</h4>
+        <p>관심있는 강의를 담아보세요!</p>
+        <a th:href="@{/courses}" class="btn btn-primary">
+            <i class="bi bi-book"></i> 강의 둘러보기
+        </a>
+    </div>
+
+    <div th:if="${!cart.items.isEmpty()}" class="row">
+        <div class="col-md-8">
+            <div class="card mb-3" th:each="item : ${cart.items}">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img th:src="${item.course.thumbnailUrl != null ? item.course.thumbnailUrl : 'https://via.placeholder.com/200x120?text=Course'}"
+                                 class="img-fluid rounded" th:alt="${item.course.title}">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 th:text="${item.course.title}">강의 제목</h5>
+                            <p class="text-muted mb-2" th:text="${#strings.abbreviate(item.course.description, 100)}">
+                                강의 설명
+                            </p>
+                            <small class="text-muted">
+                                <i class="bi bi-person"></i>
+                                <span th:text="${item.course.instructor?.name}">강사명</span>
+                            </small>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <h5 class="text-primary mb-3" th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')} + '원'">
+                                100,000원
+                            </h5>
+                            <form th:action="@{/cart/remove/{id}(id=${item.course.id})}" method="post">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> 삭제
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col-md-4">
+            <div class="card shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title">주문 요약</h5>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>강의 수:</span>
+                        <strong th:text="${cart.items.size()} + '개'">3개</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>총 금액:</span>
+                        <h4 class="text-primary mb-0" th:text="${#numbers.formatInteger(cart.totalPrice, 0, 'COMMA')} + '원'">
+                            300,000원
+                        </h4>
+                    </div>
+                    <hr>
+                    <button class="btn btn-primary w-100 mb-2" disabled>
+                        <i class="bi bi-credit-card"></i> 결제하기
+                    </button>
+                    <small class="text-muted d-block text-center">
+                        * 데모 사이트로 실제 결제는 진행되지 않습니다
+                    </small>
+                    <form th:action="@{/cart/clear}" method="post" class="mt-2">
+                        <button type="submit" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-trash"></i> 장바구니 비우기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>
