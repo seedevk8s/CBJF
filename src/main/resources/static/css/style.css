@@ -35,6 +35,18 @@ body {
 .card-img-top {
     height: 200px;
     object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+/* Image Error Handling */
+img {
+    background-color: #f0f0f0;
+}
+
+img[src=""], img:not([src]) {
+    opacity: 0.5;
+    background: linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%, #e0e0e0);
+    background-size: 20px 20px;
 }
 
 /* Course Card */

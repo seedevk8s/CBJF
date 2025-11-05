@@ -24,8 +24,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <img th:src="${item.course.thumbnailUrl != null ? item.course.thumbnailUrl : 'https://via.placeholder.com/200x120?text=Course'}"
-                                 class="img-fluid rounded" th:alt="${item.course.title}">
+                            <img th:src="${item.course.thumbnailUrl != null ? item.course.thumbnailUrl : '/images/placeholder-200x120.svg'}"
+                                 class="img-fluid rounded" th:alt="${item.course.title}"
+                                 onerror="this.onerror=null; this.src='/images/placeholder-200x120.svg';">
                         </div>
                         <div class="col-md-6">
                             <h5 th:text="${item.course.title}">강의 제목</h5>

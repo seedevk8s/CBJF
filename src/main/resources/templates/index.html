@@ -49,8 +49,9 @@
         <div class="row">
             <div class="col-md-4 course-card" th:each="course : ${popularCourses}">
                 <div class="card shadow-sm">
-                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/400x200?text=Course'}"
-                         class="card-img-top" th:alt="${course.title}">
+                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : '/images/placeholder-400x200.svg'}"
+                         class="card-img-top" th:alt="${course.title}"
+                         onerror="this.onerror=null; this.src='/images/placeholder-400x200.svg';">
                     <div class="card-body">
                         <span class="badge bg-primary mb-2" th:text="${course.category?.name}">카테고리</span>
                         <h5 class="card-title" th:text="${course.title}">강의 제목</h5>
@@ -89,8 +90,9 @@
         <div class="row">
             <div class="col-md-4 course-card" th:each="course : ${latestCourses}">
                 <div class="card shadow-sm">
-                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/400x200?text=Course'}"
-                         class="card-img-top" th:alt="${course.title}">
+                    <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : '/images/placeholder-400x200.svg'}"
+                         class="card-img-top" th:alt="${course.title}"
+                         onerror="this.onerror=null; this.src='/images/placeholder-400x200.svg';">
                     <div class="card-body">
                         <span class="badge bg-success mb-2">NEW</span>
                         <span class="badge bg-primary mb-2 ms-1" th:text="${course.category?.name}">카테고리</span>

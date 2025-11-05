@@ -200,7 +200,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(250000)
                 .duration("2개월")
                 .level("초급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Java+Basic")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Java+Basic") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(156)
                 .rating(4.8)
@@ -214,7 +214,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(300000)
                 .duration("2개월")
                 .level("고급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/FF9800/FFFFFF?text=Java+Advanced")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/FF9800/FFFFFF?text=Java+Advanced") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(89)
                 .rating(4.9)
@@ -229,7 +229,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(400000)
                 .duration("3개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Spring+Boot")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Spring+Boot") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(234)
                 .rating(4.9)
@@ -243,7 +243,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(500000)
                 .duration("3개월")
                 .level("고급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=Spring+Cloud")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=Spring+Cloud") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(67)
                 .rating(4.7)
@@ -258,7 +258,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(200000)
                 .duration("2개월")
                 .level("초급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/F44336/FFFFFF?text=Web+Basic")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/F44336/FFFFFF?text=Web+Basic") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(312)
                 .rating(4.6)
@@ -272,7 +272,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(350000)
                 .duration("2개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/00BCD4/FFFFFF?text=React")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/00BCD4/FFFFFF?text=React") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(178)
                 .rating(4.8)
@@ -286,7 +286,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(320000)
                 .duration("2개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Vue.js")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Vue.js") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(95)
                 .rating(4.5)
@@ -301,7 +301,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(280000)
                 .duration("2개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/FF5722/FFFFFF?text=MySQL")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/FF5722/FFFFFF?text=MySQL") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(145)
                 .rating(4.7)
@@ -315,7 +315,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(300000)
                 .duration("2개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=MongoDB")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=MongoDB") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(78)
                 .rating(4.6)
@@ -330,7 +330,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(450000)
                 .duration("3개월")
                 .level("고급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Docker+K8s")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Docker+K8s") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(112)
                 .rating(4.8)
@@ -344,7 +344,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(420000)
                 .duration("3개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/FF9800/FFFFFF?text=AWS")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/FF9800/FFFFFF?text=AWS") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(203)
                 .rating(4.9)
@@ -358,7 +358,7 @@ public class DataLoader implements CommandLineRunner {
                 .price(380000)
                 .duration("2개월")
                 .level("중급")
-                .thumbnailUrl("https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=CI+CD")
+                // .thumbnailUrl("https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=CI+CD") // 로컬 placeholder 사용
                 .published(true)
                 .enrollmentCount(134)
                 .rating(4.7)
