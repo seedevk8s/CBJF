@@ -12,39 +12,39 @@
                  class="img-fluid rounded shadow-sm mb-4" th:alt="${course.title}"
                  onerror="this.onerror=null; this.src='/images/course-thumbnail-800x400.svg';">
 
-            <!-- Course Info -->
-            <h1 class="mb-3" th:text="${course.title}">강의 제목</h1>
+            <!-- Product Info -->
+            <h1 class="mb-3" th:text="${course.title}">상품명</h1>
 
             <div class="mb-3">
                 <span class="badge bg-primary me-2" th:text="${course.category?.name}">카테고리</span>
-                <span class="badge bg-info me-2" th:if="${course.level}" th:text="${course.level}">난이도</span>
+                <span class="badge bg-info me-2" th:if="${course.level}" th:text="${course.level}">등급</span>
                 <span class="course-rating me-3">
                     <i class="bi bi-star-fill"></i>
                     <span th:text="${#numbers.formatDecimal(course.rating, 1, 1)}">4.5</span>
                 </span>
                 <span class="text-muted">
-                    <i class="bi bi-people"></i>
-                    <span th:text="${course.enrollmentCount}">100</span>명 수강 중
+                    <i class="bi bi-cart-check"></i>
+                    <span th:text="${course.enrollmentCount}">100</span>개 판매
                 </span>
             </div>
 
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <i class="bi bi-info-circle"></i> 강의 소개
+                        <i class="bi bi-info-circle"></i> 상품 설명
                     </h5>
-                    <p class="card-text" th:text="${course.description}">강의 설명</p>
+                    <p class="card-text" th:text="${course.description}">상품 설명</p>
                 </div>
             </div>
 
-            <!-- Instructor Info -->
+            <!-- Seller Info -->
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <i class="bi bi-person"></i> 강사 정보
+                        <i class="bi bi-shop"></i> 판매자 정보
                     </h5>
                     <p class="mb-0">
-                        <strong th:text="${course.instructor?.name}">강사명</strong><br>
+                        <strong th:text="${course.instructor?.name}">판매자</strong><br>
                         <small class="text-muted" th:text="${course.instructor?.email}">이메일</small>
                     </p>
                 </div>
@@ -54,7 +54,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <i class="bi bi-chat-left-quote"></i> 수강 후기
+                        <i class="bi bi-chat-left-quote"></i> 상품 후기
                     </h5>
                     <div th:if="${course.reviews.isEmpty()}" class="text-muted">
                         아직 작성된 후기가 없습니다.
@@ -85,12 +85,12 @@
 
                     <ul class="list-unstyled mb-4">
                         <li class="mb-2" th:if="${course.duration}">
-                            <i class="bi bi-clock text-primary"></i>
-                            수강 기간: <strong th:text="${course.duration}">6개월</strong>
+                            <i class="bi bi-truck text-primary"></i>
+                            배송: <strong th:text="${course.duration}">2-3일</strong>
                         </li>
                         <li class="mb-2">
-                            <i class="bi bi-people text-primary"></i>
-                            수강생: <strong th:text="${course.enrollmentCount}">100</strong>명
+                            <i class="bi bi-cart-check text-primary"></i>
+                            판매량: <strong th:text="${course.enrollmentCount}">100</strong>개
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-star text-primary"></i>
