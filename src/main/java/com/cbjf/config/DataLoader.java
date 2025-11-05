@@ -39,6 +39,13 @@ public class DataLoader implements CommandLineRunner {
         log.info("데모 데이터 로딩 시작...");
         log.info("========================================");
 
+        // 데이터가 이미 존재하는지 확인
+        if (userRepository.count() > 0) {
+            log.info("데모 데이터가 이미 존재합니다. 데이터 로딩을 건너뜁니다.");
+            log.info("========================================");
+            return;
+        }
+
         // 사용자 생성
         List<User> users = createUsers();
         log.info("✓ 사용자 {} 명 생성 완료", users.size());
