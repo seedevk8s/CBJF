@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120">
+  <rect width="200" height="120" fill="#e0e0e0"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#757575" font-family="Arial, sans-serif" font-size="14">강의 이미지</text>
+</svg>

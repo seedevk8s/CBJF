@@ -41,8 +41,9 @@
     <div class="row">
         <div class="col-md-4 course-card" th:each="course : ${coursePage.content}">
             <div class="card shadow-sm">
-                <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : 'https://via.placeholder.com/400x200?text=Course'}"
-                     class="card-img-top" th:alt="${course.title}">
+                <img th:src="${course.thumbnailUrl != null ? course.thumbnailUrl : '/images/placeholder-400x200.svg'}"
+                     class="card-img-top" th:alt="${course.title}"
+                     onerror="this.onerror=null; this.src='/images/placeholder-400x200.svg';">
                 <div class="card-body">
                     <span class="badge bg-primary mb-2" th:text="${course.category?.name}">카테고리</span>
                     <span class="badge bg-info mb-2" th:if="${course.level}" th:text="${course.level}">난이도</span>
