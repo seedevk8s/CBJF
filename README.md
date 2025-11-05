@@ -56,7 +56,7 @@
 - **Bootstrap Icons** - 아이콘 라이브러리
 
 ### Database
-- **H2 Database** - 인메모리 데이터베이스 (개발용)
+- **MySQL 8.0+** - 관계형 데이터베이스
 - **Hibernate** - JPA 구현체
 
 ### Build Tool
@@ -99,14 +99,45 @@ CBJF/
 ### 1. 사전 요구사항
 - JDK 17 이상
 - Maven 3.6 이상
+- **MySQL 8.0 이상**
 
-### 2. 프로젝트 클론
+### 2. MySQL 데이터베이스 설정
+
+MySQL을 설치하고 데이터베이스를 생성합니다:
+
+```sql
+# MySQL 접속
+mysql -u root -p
+
+# 데이터베이스 생성
+CREATE DATABASE cbjfdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# 사용자 생성 및 권한 부여 (선택사항)
+CREATE USER 'cbjfuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON cbjfdb.* TO 'cbjfuser'@'localhost';
+FLUSH PRIVILEGES;
+
+# 종료
+EXIT;
+```
+
+**application.properties 설정 확인**
+
+`src/main/resources/application.properties` 파일에서 데이터베이스 설정을 확인하고 필요시 수정:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/cbjfdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=your_password
+```
+
+### 3. 프로젝트 클론
 ```bash
 git clone https://github.com/seedevk8s/CBJF.git
 cd CBJF
 ```
 
-### 3. 빌드 및 실행
+### 4. 빌드 및 실행
 ```bash
 # Maven 빌드
 mvn clean package
@@ -115,12 +146,9 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-### 4. 접속
+### 5. 접속
 - 메인: http://localhost:8080
-- H2 콘솔: http://localhost:8080/h2-console
-  - JDBC URL: `jdbc:h2:mem:cbjfdb`
-  - Username: `sa`
-  - Password: (비워두기)
+- 데모 데이터가 자동으로 로드됩니다
 
 ## 📊 데모 데이터
 
