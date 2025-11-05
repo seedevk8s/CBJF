@@ -1,0 +1,68 @@
+<svg width="1920" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background gradient -->
+  <rect width="1920" height="400" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <rect width="1920" height="400" fill="url(#grid)"/>
+
+  <!-- Code symbols and tech icons scattered across background -->
+  <g opacity="0.15" fill="white">
+    <!-- Curly braces -->
+    <text x="150" y="100" font-size="60" font-family="monospace">{</text>
+    <text x="1700" y="350" font-size="60" font-family="monospace">}</text>
+
+    <!-- Angle brackets -->
+    <text x="300" y="300" font-size="50" font-family="monospace">&lt;/&gt;</text>
+    <text x="1500" y="150" font-size="50" font-family="monospace">&lt;/&gt;</text>
+
+    <!-- Function symbols -->
+    <text x="800" y="80" font-size="40" font-family="monospace">function()</text>
+    <text x="500" y="350" font-size="35" font-family="monospace">class</text>
+
+    <!-- Semicolons and operators -->
+    <text x="1200" y="280" font-size="70" font-family="monospace">;</text>
+    <text x="1000" y="120" font-size="50" font-family="monospace">=&gt;</text>
+
+    <!-- Additional code elements -->
+    <text x="200" y="250" font-size="40" font-family="monospace">[ ]</text>
+    <text x="1400" y="320" font-size="45" font-family="monospace">( )</text>
+  </g>
+
+  <!-- Laptop/Computer illustration -->
+  <g opacity="0.2" fill="white" transform="translate(1600, 250)">
+    <rect x="0" y="0" width="120" height="80" rx="4" stroke="white" stroke-width="2" fill="none"/>
+    <rect x="-10" y="80" width="140" height="8" rx="2"/>
+    <rect x="40" y="88" width="40" height="4"/>
+  </g>
+
+  <!-- Book illustration -->
+  <g opacity="0.2" fill="white" transform="translate(100, 30)">
+    <rect x="0" y="0" width="60" height="80" rx="2" stroke="white" stroke-width="2" fill="none"/>
+    <line x1="10" y1="20" x2="50" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="10" y1="35" x2="50" y2="35" stroke="white" stroke-width="2"/>
+    <line x1="10" y1="50" x2="50" y2="50" stroke="white" stroke-width="2"/>
+  </g>
+
+  <!-- Floating particles/dots -->
+  <g opacity="0.3" fill="white">
+    <circle cx="400" cy="150" r="3"/>
+    <circle cx="600" cy="80" r="2"/>
+    <circle cx="900" cy="320" r="4"/>
+    <circle cx="1100" cy="200" r="2"/>
+    <circle cx="1300" cy="100" r="3"/>
+    <circle cx="1600" cy="180" r="2"/>
+    <circle cx="250" cy="180" r="2"/>
+    <circle cx="700" cy="250" r="3"/>
+  </g>
+</svg>
