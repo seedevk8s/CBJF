@@ -46,7 +46,7 @@ public class CartService {
 
         // 이미 장바구니에 있는지 확인
         if (cartItemRepository.existsByCartAndCourse(cart, course)) {
-            throw new IllegalArgumentException("이미 장바구니에 담긴 강의입니다");
+            return; // 이미 담긴 강의는 무시
         }
 
         CartItem item = CartItem.create(course);
